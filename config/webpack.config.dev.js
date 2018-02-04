@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const cssImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
 
 module.exports = {
   target: 'web',
@@ -30,6 +32,35 @@ module.exports = {
             ],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                cssImport(),
+                cssnext({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9',
+                  ],
+                }),
+              ],
+            },
+          },
+        ],
       },
     ],
   },
