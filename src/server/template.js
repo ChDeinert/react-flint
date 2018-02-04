@@ -8,5 +8,6 @@ module.exports = () => `<!DOCTYPE html>
   </head>
   <body>
     <div id="main"></div>
+    <script type="text/javascript" src="/assets/static/js/main.js"></script>
   </body>
 </html>`;
