@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "Skeleton for React Projects",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js \"**/*.js\"",
+    "lint:fix": "eslint *.js \"**/*.js\" --fix",
+    "start": "node entrypoint/server.js"
   },
   "repository": {
     "type": "git",
