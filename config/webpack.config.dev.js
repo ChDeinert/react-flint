@@ -6,6 +6,7 @@ const cssnext = require('postcss-cssnext');
 module.exports = {
   target: 'web',
   entry: [
+    require.resolve('./polyfills'),
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     './entrypoint/client.js',
