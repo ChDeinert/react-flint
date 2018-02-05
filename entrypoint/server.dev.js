@@ -19,14 +19,12 @@ require('dotenv').load({ path: dotEnvPath, silent: true });
 
 const app = express();
 
-app.use('/assets', express.static('build'));
-
 const compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, {
   heartbeat: 2000,
   quiet: true,
   noInfo: true,
-  publicPath: '/assets/static',
+  publicPath: '/assets/static/',
   stats: { colors: true },
 }));
 app.use(webpackHotMiddleware(compiler, {
