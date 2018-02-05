@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   target: 'web',
@@ -67,5 +68,8 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }),
   ],
 };
