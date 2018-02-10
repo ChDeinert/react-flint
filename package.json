@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint *.js \"**/*.js\"",
     "lint:fix": "eslint *.js \"**/*.js\" --fix",
-    "start": "node entrypoint/server.dev.js"
+    "start": "echo \"Error: no start specified. Please run start:dev or start:prod\" && exit 0",
+    "start:dev": "node entrypoint/server.dev.js",
+    "start:prod": "node entrypoint/server.prod.js"
   },
   "repository": {
     "type": "git",
