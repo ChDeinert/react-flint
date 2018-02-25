@@ -16,7 +16,7 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     path: path.resolve(__dirname, '../build'),
-    publicPath: '/assets/static',
+    publicPath: '/assets',
     pathinfo: true,
   },
   module: {

@@ -24,7 +24,7 @@ app.use(webpackDevMiddleware(compiler, {
   heartbeat: 2000,
   quiet: true,
   noInfo: true,
-  publicPath: '/assets/static/',
+  publicPath: '/assets',
   stats: { colors: true },
 }));
 app.use(webpackHotMiddleware(compiler, {

@@ -11,6 +11,6 @@ module.exports = assetManifest => `<!DOCTYPE html>
   </head>
   <body>
     <div id="main"></div>
-    <script type="text/javascript" src="/assets/${assetManifest['main.js'] || 'static/js/main.js'}"></script>
+    <script type="text/javascript" src="/assets/${assetManifest['main.js'] || 'js/main.js'}"></script>
   </body>
 </html>`;

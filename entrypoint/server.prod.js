@@ -14,7 +14,7 @@ require('dotenv').load({ path: dotEnvPath, silent: true });
 
 const app = express();
 
-app.use('/assets/static', express.static('build/static'));
+app.use('/assets', express.static('build'));
 
 routing(app, assetManifest);
 
