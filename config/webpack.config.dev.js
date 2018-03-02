@@ -10,7 +10,7 @@ module.exports = {
     require.resolve('./polyfills'),
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    './entrypoint/client.js',
+    './entrypoint/client.dev.js',
   ],
   devtool: 'source-map',
   output: {
