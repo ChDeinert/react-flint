@@ -12,8 +12,8 @@
     "start:prod:ssr": "node entrypoint/server/prod.ssr.js",
     "build": "webpack --config config/webpack.config.prod.js",
     "build:serverless": "webpack --config config/webpack.config.prod.serverless.js",
-    "build:ssr:client": "webpack --config config/webpack.config.ssr.client.prod.js",
-    "build:ssr:server": "webpack --config config/webpack.config.ssr.server.prod.js",
+    "build:ssr:client": "webpack --config config/webpack.config.prod.ssr.client.js",
+    "build:ssr:server": "webpack --config config/webpack.config.prod.ssr.server.js",
     "build:ssr": "npm run build:ssr:client && npm run build:ssr:server"
   },
   "repository": {
