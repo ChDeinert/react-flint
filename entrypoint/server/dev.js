@@ -8,8 +8,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
-const webpackConfig = require('../config/webpack.config.dev.js');
-const routes = require('../src/server/routes.dev');
+const webpackConfig = require('../../config/webpack.config.dev.js');
+const routes = require('../../src/server/routes.dev');
 
 const dotEnvPath = process.env.DOT_ENV_PATH || '.env';
 fs.exists(dotEnvPath, exists =>

@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 
-const routes = require('../src/server/routes');
+const routes = require('../../src/server/routes');
 
 const dotEnvPath = process.env.DOT_ENV_PATH || '.env';
 fs.exists(dotEnvPath, exists =>
