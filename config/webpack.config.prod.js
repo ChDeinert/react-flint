@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
@@ -106,6 +107,22 @@ module.exports = {
     }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: 'src/server/template/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',

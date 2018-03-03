@@ -9,7 +9,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const webpackConfig = require('../config/webpack.config.dev.js');
-const routing = require('../src/server/routing');
+const routes = require('../src/server/routes.dev');
 
 const dotEnvPath = process.env.DOT_ENV_PATH || '.env';
 fs.exists(dotEnvPath, exists =>
@@ -31,7 +31,7 @@ app.use(webpackHotMiddleware(compiler, {
   dynamicPublicPath: true,
 }));
 
-routing(app);
+app.use(routes);
 
 app.listen(process.env.APP_PORT || 8080, () => {
   // eslint-disable-next-line no-console

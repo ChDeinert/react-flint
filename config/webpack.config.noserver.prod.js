@@ -8,7 +8,7 @@ const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const fs = require('fs-extra');
 
-const publicPath = '/assets';
+const publicPath = '/';
 
 const cssFilename = 'static/css/[name].[contenthash:8].css';
 

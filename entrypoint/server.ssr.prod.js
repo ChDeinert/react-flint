@@ -1,10 +1,7 @@
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
 
-const assetManifestPath = path.resolve(__dirname, '../build/asset-manifest.json');
-const assetManifest = JSON.parse(fs.readFileSync(assetManifestPath, 'utf8'));
-const routing = require('../src/server/routing.ssr');
+const routes = require('../src/server/routes.ssr');
 
 const dotEnvPath = process.env.DOT_ENV_PATH || '.env';
 fs.exists(dotEnvPath, exists =>
@@ -16,7 +13,7 @@ const app = express();
 
 app.use('/assets', express.static('build'));
 
-routing(app, assetManifest);
+app.use(routes);
 
 app.listen(process.env.APP_PORT || 8080, () => {
   // eslint-disable-next-line no-console
