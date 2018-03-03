@@ -4,6 +4,8 @@ const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
+const publicPath = '/assets';
+
 module.exports = {
   target: 'web',
   entry: [
@@ -16,7 +18,7 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     path: path.resolve(__dirname, '../build'),
-    publicPath: '/assets',
+    publicPath,
     pathinfo: true,
   },
   module: {
@@ -29,9 +31,7 @@ module.exports = {
           options: {
             presets: ['env', 'react'],
             cacheDirectory: true,
-            plugins: [
-              'react-hot-loader/babel',
-            ],
+            plugins: ['react-hot-loader/babel'],
           },
         },
       },
@@ -43,6 +43,8 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
           {
