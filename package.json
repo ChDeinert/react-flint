@@ -6,10 +6,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint *.js \"**/*.js\"",
     "lint:fix": "eslint *.js \"**/*.js\" --fix",
-    "start": "echo \"Error: no start specified. Please run start:dev or start:prod\" && exit 0",
+    "start": "echo \"Error: no start specified. Please run start:dev / start:prod / start:prod:ssr\" && exit 0",
     "start:dev": "node entrypoint/server.dev.js",
     "start:prod": "node entrypoint/server.prod.js",
-    "build": "webpack --config config/webpack.config.prod.js"
+    "start:prod:ssr": "node entrypoint/server.ssr.prod.js",
+    "build": "webpack --config config/webpack.config.prod.js",
+    "build:ssr": "npm run build && webpack --config config/webpack.config.ssr.prod.js"
   },
   "repository": {
     "type": "git",

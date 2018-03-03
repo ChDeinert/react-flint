@@ -5,26 +5,22 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
-const fs = require('fs-extra');
 
 const publicPath = '/assets';
 
-const cssFilename = 'static/css/[name].[contenthash:8].css';
-
-fs.emptyDirSync(path.resolve(__dirname, '../build'));
+const cssFilename = '[name].css';
 
 module.exports = {
-  target: 'web',
-  entry: [
-    require.resolve('./polyfills'),
-    './entrypoint/client.prod.js',
-  ],
+  target: 'node',
+  entry: {
+    app: ['./src/App'],
+  },
   devtool: 'nosources-source-map',
   output: {
-    filename: 'static/js/[name].[chunkhash:8].js',
-    chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../build'),
     publicPath,
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
@@ -105,11 +101,12 @@ module.exports = {
       filename: cssFilename,
     }),
     new ManifestPlugin({
-      fileName: 'asset-manifest.json',
+      fileName: 'asset-manifest.ssr.json',
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
+      reportFilename: 'report.ssr.html',
     }),
   ],
 };
