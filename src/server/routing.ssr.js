@@ -1,4 +1,4 @@
-const template = require('./template.ssr');
+const template = require('./template/template.ssr');
 const serverSideRenderer = require('./renderer.ssr');
 
 module.exports = (app, assetManifest = {}) => {

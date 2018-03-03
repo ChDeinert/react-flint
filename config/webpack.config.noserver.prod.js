@@ -110,7 +110,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: './config/index.html',
+      template: 'src/server/template/index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

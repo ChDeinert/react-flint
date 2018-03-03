@@ -11,6 +11,7 @@
     "start:prod": "node entrypoint/server.prod.js",
     "start:prod:ssr": "node entrypoint/server.ssr.prod.js",
     "build": "webpack --config config/webpack.config.prod.js",
+    "build:noserver": "webpack --config config/webpack.config.noserver.prod.js",
     "build:ssr": "npm run build && webpack --config config/webpack.config.ssr.prod.js"
   },
   "repository": {
