@@ -18,7 +18,7 @@ module.exports = {
   target: 'web',
   entry: [
     require.resolve('./polyfills'),
-    './entrypoint/client.ssr.prod.js',
+    './entrypoint/client/prod.ssr.js',
   ],
   devtool: 'nosources-source-map',
   output: {
