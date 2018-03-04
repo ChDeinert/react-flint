@@ -5,6 +5,7 @@ const webpackConfig = require('./webpack.config.base');
 const publicPath = '/';
 
 fs.emptyDirSync(path.resolve(__dirname, '../build'));
+fs.emptyDirSync(path.resolve(__dirname, '../build-reports'));
 
 webpackConfig.entry.push('./entrypoint/client/prod.js');
 webpackConfig.output.publicPath = publicPath;

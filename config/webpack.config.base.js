@@ -7,7 +7,9 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 
-const publicPath = '/assets';
+const env = require('./env');
+
+const { publicPath } = env;
 const cssFilename = 'static/css/[name].[contenthash:8].css';
 
 module.exports = {
@@ -129,6 +131,7 @@ module.exports = {
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
+      reportFilename: '../build-reports/report.html',
     }),
   ],
 };

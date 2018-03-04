@@ -38,7 +38,7 @@ webpackConfig.plugins = [
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
     openAnalyzer: false,
-    reportFilename: 'report.ssr.html',
+    reportFilename: '../build-reports/report.ssr.html',
   }),
 ];
 
