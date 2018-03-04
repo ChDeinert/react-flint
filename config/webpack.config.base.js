@@ -113,6 +113,7 @@ module.exports = {
       fileName: 'asset-manifest.json',
     }),
     new HtmlWebpackPlugin({
+      title: env.htmlTitle,
       inject: true,
       template: 'src/server/template/index.html',
       minify: {
