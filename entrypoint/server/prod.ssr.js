@@ -1,5 +1,4 @@
 const express = require('express');
-
 const env = require('../../config/env');
 const routes = require('../../src/server/routes.ssr');
 
