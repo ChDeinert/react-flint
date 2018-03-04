@@ -1,6 +1,6 @@
-* {
-  margin: 0;
+@import "bootstrap/dist/css/bootstrap-reboot.css";
+
+*, :before, :after {
   padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui;
+  margin: 0;
 }
