@@ -1,6 +1,6 @@
 module.exports = {
   verbose: true,
-  collectCoverageFrom: ['{entrypoint,src}/**/*.{js,jsx}'],
+  collectCoverageFrom: ['src/**/*.{js,jsx}'],
   testMatch: ['<rootDir>/test/**/?(*.)(spec|test).{js,jsx}'],
   setupFiles: [
     '<rootDir>/config/polyfills.js',

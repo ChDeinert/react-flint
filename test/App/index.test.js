@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import App from 'AppSource';
 
@@ -7,7 +7,7 @@ describe('<App />', () => {
   let wrapper;
 
   beforeAll(() => {
-    wrapper = shallow(<App />);
+    wrapper = mount(<App />);
   });
 
   it('renders the Header component', () => {
