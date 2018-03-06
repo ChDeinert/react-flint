@@ -5,7 +5,8 @@
       "module-resolver", {
         "alias": {
           "Components": "./src/App/components",
-          "AppSource": "./src/App"
+          "AppSource": "./src/App",
+          "ServerSource": "./src/server"
         }
       }
     ]
