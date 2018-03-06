@@ -6,6 +6,7 @@
         "alias": {
           "Components": "./src/App/components",
           "AppSource": "./src/App",
+          "Public": "./public",
           "ServerSource": "./src/server"
         }
       }

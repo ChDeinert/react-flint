@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import Header from 'Components/Header';
-import Footer from 'Components/Footer';
+import Content from 'Components/Content';
 
 import './base.css';
 
 const App = () => (
   <Fragment>
     <Header />
-    <h1>Hello World!</h1>
-    <Footer />
+    <Content />
   </Fragment>
 );
 

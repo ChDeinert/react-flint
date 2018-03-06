@@ -15,44 +15,55 @@ webpackConfig.output.filename = 'js/[name].js';
 webpackConfig.output.pathinfo = true;
 webpackConfig.module.rules = [
   {
-    test: /\.js$/,
-    exclude: /(node_modules|bower_components)/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: ['env', 'react'],
-        cacheDirectory: true,
-        plugins: ['react-hot-loader/babel'],
-      },
-    },
-  },
-  {
-    test: /\.css$/,
-    use: [
-      require.resolve('style-loader'),
+    oneOf: [
       {
-        loader: require.resolve('css-loader'),
-        options: {
-          importLoaders: 1,
-          modules: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]',
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react'],
+            cacheDirectory: true,
+            plugins: ['react-hot-loader/babel'],
+          },
         },
       },
       {
-        loader: require.resolve('postcss-loader'),
-        options: {
-          ident: 'postcss',
-          plugins: () => [
-            cssImport(),
-            cssnext({
-              browsers: [
-                '>1%',
-                'last 4 versions',
-                'Firefox ESR',
-                'not ie < 9',
+        test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                cssImport(),
+                cssnext({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9',
+                  ],
+                }),
               ],
-            }),
-          ],
+            },
+          },
+        ],
+      },
+      {
+        loader: require.resolve('file-loader'),
+        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+        options: {
+          name: 'media/[name].[hash:8].[ext]',
         },
       },
     ],
