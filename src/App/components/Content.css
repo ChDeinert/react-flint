@@ -2,8 +2,15 @@
 
 .wrapper {
   width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
   padding: 20px;
   color: var(--black);
   font-size: 20px;
   line-height: 1.3;
+}
+
+.heading {
+  font-size: 1.5em;
+  text-decoration: underline var(--orange);
 }
