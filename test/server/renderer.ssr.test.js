@@ -9,7 +9,7 @@ describe('server side renderer', () => {
   const template = fs.readFileSync(fixturePath, 'utf8');
 
   it('injects rendered payload into template', () => {
-    const serverSideRenderer = makeServerSideRenderer(template, App);
+    const serverSideRenderer = makeServerSideRenderer({ template, App });
     const result = serverSideRenderer();
     expect(result).toMatch(/<div.class="foo".data-reactroot="">bar<\/div>/);
   });

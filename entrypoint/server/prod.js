@@ -1,11 +1,19 @@
 const express = require('express');
+const path = require('path');
+
 const env = require('../../config/env');
-const routes = require('../../src/server/routes');
+const setupRoutes = require('../../src/server/setupRoutes');
+const makeGetTemplate = require('../../src/server/template/makeGetTemplate');
+
+const templatePath = path.resolve(__dirname, '../../build/index.html');
+const routes = setupRoutes({
+  router: express.Router(),
+  getTemplate: makeGetTemplate(templatePath),
+});
 
 const app = express();
 
 app.use(env.publicPath, express.static('build'));
-
 app.use(routes);
 
 app.listen(env.appPort, () => {

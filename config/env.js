@@ -9,5 +9,5 @@ require('dotenv').load({ path: dotEnvPath, silent: true });
 module.exports = {
   htmlTitle: 'react-uni-skeleton',
   appPort: process.env.APP_PORT || 8080,
-  publicPath: '/assets',
+  publicPath: '/assets/',
 };
