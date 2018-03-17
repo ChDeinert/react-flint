@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "Skeleton for React Projects",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
     "lint": "eslint *.js \"**/*.js\"",
     "lint:fix": "eslint *.js \"**/*.js\" --fix",
     "start": "echo \"Error: no start specified. Please run start:dev / start:prod / start:prod:ssr\" && exit 0",
