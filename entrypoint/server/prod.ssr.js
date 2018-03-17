@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const path = require('path');
 
 const env = require('../../config/env');
@@ -22,6 +23,7 @@ const routes = setupRoutes({
 
 const app = express();
 
+app.use(compression());
 app.use(env.publicPath, express.static('build'));
 app.use(routes);
 
