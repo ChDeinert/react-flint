@@ -7,7 +7,7 @@ fs.exists(dotEnvPath, exists =>
 require('dotenv').load({ path: dotEnvPath, silent: true });
 
 module.exports = {
-  htmlTitle: 'react-tinder',
+  htmlTitle: 'react-flint',
   appPort: process.env.APP_PORT || 8080,
   publicPath: '/assets/',
 };

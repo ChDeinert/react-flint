@@ -1,3 +1,3 @@
-# react-tinder
+# react-flint
 
-Boilerplate for starting React Projects
+Boilerplate to help ignite React Projects

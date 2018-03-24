@@ -1,7 +1,7 @@
 {
-  "name": "react-tinder",
+  "name": "react-flint",
   "version": "0.0.0",
-  "description": "Boilerplate for starting React Projects",
+  "description": "Boilerplate to help ignite React Projects",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChDeinert/react-tinder.git"
+    "url": "git+https://github.com/ChDeinert/react-flint.git"
   },
   "author": "Christian Deinert <ChDeinert@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ChDeinert/react-tinder/issues"
+    "url": "https://github.com/ChDeinert/react-flint/issues"
   },
-  "homepage": "https://github.com/ChDeinert/react-tinder#readme",
+  "homepage": "https://github.com/ChDeinert/react-flint#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
