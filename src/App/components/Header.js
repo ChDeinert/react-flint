@@ -7,7 +7,7 @@ import headerStyles from './Header.css';
 const Header = () => (
   <header className={headerStyles.wrapper}>
     <img src={logo} className={headerStyles.logo} alt="logo" />
-    <span>react-uni-skeleton</span>
+    <span>react-tinder</span>
   </header>
 );
 

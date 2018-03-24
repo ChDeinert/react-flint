@@ -1,2 +1,3 @@
-# react-uni-skeleton
-Skeleton for React Projects
+# react-tinder
+
+Boilerplate for starting React Projects

@@ -1,7 +1,7 @@
 {
-  "name": "react-uni-skeleton",
+  "name": "react-tinder",
   "version": "0.0.0",
-  "description": "Skeleton for React Projects",
+  "description": "Boilerplate for starting React Projects",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChDeinert/react-uni-skeleton.git"
+    "url": "git+https://github.com/ChDeinert/react-tinder.git"
   },
   "author": "Christian Deinert <ChDeinert@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ChDeinert/react-uni-skeleton/issues"
+    "url": "https://github.com/ChDeinert/react-tinder/issues"
   },
-  "homepage": "https://github.com/ChDeinert/react-uni-skeleton#readme",
+  "homepage": "https://github.com/ChDeinert/react-tinder#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
