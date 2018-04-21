@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -15,17 +16,17 @@ webpackConfig.plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': '"production"',
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-      comparisons: false,
-    },
-    mangle: {
+  new UglifyJsPlugin({
+    uglifyOptions: {
+      compress: {
+        warnings: false,
+        comparisons: false,
+      },
+      output: {
+        comments: false,
+        ascii_only: true,
+      },
       safari10: true,
-    },
-    output: {
-      comments: false,
-      ascii_only: true,
     },
     sourceMap: true,
   }),
