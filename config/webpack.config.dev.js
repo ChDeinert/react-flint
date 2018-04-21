@@ -5,6 +5,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const webpackConfig = require('./webpack.config.base');
 
+webpackConfig.mode = 'development';
 webpackConfig.entry.push(
   'react-hot-loader/patch',
   'webpack-hot-middleware/client',

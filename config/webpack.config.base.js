@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -10,10 +11,11 @@ const cssnext = require('postcss-cssnext');
 const env = require('./env');
 
 const { publicPath } = env;
-const cssFilename = 'static/css/[name].[contenthash:8].css';
+const cssFilename = 'static/css/[name].[hash:8].css';
 
 module.exports = {
   target: 'web',
+  mode: 'production',
   entry: [
     require.resolve('./polyfills'),
   ],
@@ -91,20 +93,21 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        comparisons: false,
-      },
-      mangle: {
+    // new webpack.DefinePlugin({
+    //   'process.env.NODE_ENV': '"production"',
+    // }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false,
+          comparisons: false,
+        },
+        output: {
+          comments: false,
+          beautify: false,
+          ascii_only: true,
+        },
         safari10: true,
-      },
-      output: {
-        comments: false,
-        ascii_only: true,
       },
       sourceMap: true,
     }),
