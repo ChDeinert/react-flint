@@ -23,7 +23,6 @@ webpackConfig.module.rules = [
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react'],
             cacheDirectory: true,
             plugins: ['react-hot-loader/babel'],
           },
