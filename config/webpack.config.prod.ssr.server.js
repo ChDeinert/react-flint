@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const webpackConfig = require('./webpack.config.base');
@@ -30,8 +31,13 @@ webpackConfig.plugins = [
     },
     sourceMap: true,
   }),
-  new ExtractTextPlugin({
+  new MiniCssExtractPlugin({
     filename: cssFilename,
+  }),
+  new OptimizeCssAssetsPlugin({
+    cssProcessorPluginOptions: {
+      preset: ['default', { discardComments: { removeAll: true } }],
+    },
   }),
   new ManifestPlugin({
     fileName: 'asset-manifest.ssr.json',

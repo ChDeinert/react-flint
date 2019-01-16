@@ -7,9 +7,13 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "template-curly-spacing": "off",
+    "indent": "off"
   },
+  "parser": "babel-eslint",
   "settings": {
+    "import/parser": "babel-eslint",
     "import/resolver": {
       "babel-module": {}
     }

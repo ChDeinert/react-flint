@@ -1,7 +1,8 @@
 const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const cssImport = require('postcss-import');
@@ -15,9 +16,7 @@ const cssFilename = 'static/css/[name].[hash:8].css';
 module.exports = {
   target: 'web',
   mode: 'production',
-  entry: [
-    require.resolve('./polyfills'),
-  ],
+  entry: [require.resolve('./polyfills')],
   devtool: 'nosources-source-map',
   output: {
     filename: 'static/js/[name].[chunkhash:8].js',
@@ -41,43 +40,35 @@ module.exports = {
           },
           {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract({
-              fallback: {
-                loader: require.resolve('style-loader'),
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: require.resolve('css-loader'),
                 options: {
-                  hmr: false,
+                  importLoaders: 1,
+                  sourceMap: true,
+                  modules: true,
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
                 },
               },
-              use: [
-                {
-                  loader: require.resolve('css-loader'),
-                  options: {
-                    importLoaders: 1,
-                    minimize: { discardComments: { removeAll: true } },
-                    sourceMap: true,
-                    modules: true,
-                    localIdentName: '[name]__[local]___[hash:base64:5]',
-                  },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    cssImport(),
+                    cssnext({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ],
+                    }),
+                  ],
                 },
-                {
-                  loader: require.resolve('postcss-loader'),
-                  options: {
-                    ident: 'postcss',
-                    plugins: () => [
-                      cssImport(),
-                      cssnext({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9', // React doesn't support IE8 anyway
-                        ],
-                      }),
-                    ],
-                  },
-                },
-              ],
-            }),
+              },
+            ],
           },
           {
             loader: require.resolve('file-loader'),
@@ -109,8 +100,13 @@ module.exports = {
       },
       sourceMap: true,
     }),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: cssFilename,
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
     }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
