@@ -2,11 +2,11 @@ const express = require('express');
 const compression = require('compression');
 const path = require('path');
 
-const env = require('../../config/env');
-const setupRoutes = require('../../src/server/setupRoutes');
-const makeGetTemplate = require('../../src/server/template/makeGetTemplate');
+const env = require('../../../config/env');
+const setupRoutes = require('../../server/setupRoutes');
+const makeGetTemplate = require('../../server/template/makeGetTemplate');
 
-const templatePath = path.resolve(__dirname, '../../build/index.html');
+const templatePath = path.resolve(__dirname, '../../../build/index.html');
 const routes = setupRoutes({
   router: express.Router(),
   getTemplate: makeGetTemplate(templatePath),

@@ -2,14 +2,14 @@ const express = require('express');
 const compression = require('compression');
 const path = require('path');
 
-const env = require('../../config/env');
-const setupRoutes = require('../../src/server/setupRoutes');
-const makeGetTemplate = require('../../src/server/template/makeGetTemplate');
-const makeServerSideRenderer = require('../../src/server/renderer.ssr');
+const env = require('../../../config/env');
+const setupRoutes = require('../../server/setupRoutes');
+const makeGetTemplate = require('../../server/template/makeGetTemplate');
+const makeServerSideRenderer = require('../../server/renderer.ssr');
 // eslint-disable-next-line import/no-unresolved
-const clientApp = require('../../build/app').default;
+const clientApp = require('../../../build/app').default;
 
-const templatePath = path.resolve(__dirname, '../../build/index.html');
+const templatePath = path.resolve(__dirname, '../../../build/index.html');
 const getTemplate = makeGetTemplate(templatePath);
 const serverSideRenderer = makeServerSideRenderer({
   template: getTemplate(),

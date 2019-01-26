@@ -9,7 +9,7 @@ webpackConfig.mode = 'development';
 webpackConfig.entry.push(
   'react-hot-loader/patch',
   'webpack-hot-middleware/client',
-  './entrypoint/client/dev.js',
+  './src/entrypoint/client/dev.js',
 );
 webpackConfig.devtool = 'source-map';
 webpackConfig.output.filename = 'js/[name].js';
