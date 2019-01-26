@@ -16,7 +16,7 @@ fs.emptyDirSync(path.resolve(__dirname, '../build-reports'));
 webpackConfigClient.name = 'Client';
 webpackConfigClient.entry.push(
   'webpack-hot-middleware/client',
-  './entrypoint/client/dev.ssr.js',
+  './src/entrypoint/client/dev.ssr.js',
 );
 webpackConfigClient.mode = 'development';
 webpackConfigClient.devtool = 'source-map';
@@ -80,7 +80,6 @@ webpackConfigClient.module.rules = [
 webpackConfigClient.plugins = [
   new webpack.HotModuleReplacementPlugin(),
 ];
-// webpackConfigClient.entry.push("./entrypoint/client/prod.ssr.js");
 
 webpackConfigServer.name = 'Server';
 webpackConfigServer.mode = 'development';

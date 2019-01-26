@@ -6,16 +6,16 @@ const path = require('path');
 const fs = require('fs');
 const chokidar = require('chokidar');
 
-const webpackConfig = require('../../config/webpack.config.dev.ssr.js');
-const env = require('../../config/env');
-const setupRoutes = require('../../src/server/setupRoutes');
-const makeServerSideRenderer = require('../../src/server/renderer.ssr');
+const webpackConfig = require('../../../config/webpack.config.dev.ssr.js');
+const env = require('../../../config/env');
+const setupRoutes = require('../../server/setupRoutes');
+const makeServerSideRenderer = require('../../server/renderer.ssr');
 
 const compiler = webpack(webpackConfig[0]);
 const compilerServer = webpack(webpackConfig[1]);
 const templatePath = path.resolve(
   __dirname,
-  '../../src/server/template/index.html',
+  '../../server/template/index.html',
 );
 const getTemplate = () => {
   let template = fs
@@ -63,7 +63,7 @@ app.use(
 app.use(webpackMiddlewareInstance);
 app.use(webpackMiddlewareInstanceServer);
 
-const watcher = chokidar.watch(path.resolve(__dirname, '../../build/app.js'), {
+const watcher = chokidar.watch(path.resolve(__dirname, '../../../build/app.js'), {
   persistent: true,
 });
 watcher.on('change', (watchedFile) => {
@@ -79,7 +79,7 @@ watcher.on('change', (watchedFile) => {
 webpackMiddlewareInstanceServer.waitUntilValid(() => {
   app.use((req, res, next) => {
     // eslint-disable-next-line
-    const clientApp = require('../../build/app').default;
+    const clientApp = require('../../../build/app').default;
 
     const serverSideRenderer = makeServerSideRenderer({
       template: getTemplate(),

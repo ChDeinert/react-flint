@@ -15,7 +15,7 @@ fs.emptyDirSync(path.resolve(__dirname, '../build'));
 fs.emptyDirSync(path.resolve(__dirname, '../build-reports'));
 
 webpackConfigClient.name = 'Client';
-webpackConfigClient.entry.push('./entrypoint/client/prod.ssr.js');
+webpackConfigClient.entry.push('./src/entrypoint/client/prod.ssr.js');
 
 webpackConfigServer.name = 'Server';
 webpackConfigServer.target = 'node';

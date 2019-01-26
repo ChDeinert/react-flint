@@ -5,12 +5,12 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const path = require('path');
 const fs = require('fs');
 
-const webpackConfig = require('../../config/webpack.config.dev.js');
-const env = require('../../config/env');
-const setupRoutes = require('../../src/server/setupRoutes');
+const webpackConfig = require('../../../config/webpack.config.dev.js');
+const env = require('../../../config/env');
+const setupRoutes = require('../../server/setupRoutes');
 
 const compiler = webpack(webpackConfig);
-const templatePath = path.resolve(__dirname, '../../src/server/template/index.html');
+const templatePath = path.resolve(__dirname, '../../server/template/index.html');
 const getTemplate = () => {
   let template = fs.readFileSync(templatePath, 'utf8').replace(
     /(<\/body\s*>)/i,
