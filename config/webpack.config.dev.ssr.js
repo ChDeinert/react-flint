@@ -1,18 +1,19 @@
 const webpack = require('webpack');
-const path = require("path");
-const fs = require("fs-extra");
+const path = require('path');
+const fs = require('fs-extra');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const cloneDeep = require('lodash/cloneDeep');
 
-const webpackConfigBase = require("./webpack.config.base");
+const webpackConfigBase = require('./webpack.config.base');
+
 const webpackConfigClient = cloneDeep(webpackConfigBase);
 const webpackConfigServer = cloneDeep(webpackConfigBase);
 
-fs.emptyDirSync(path.resolve(__dirname, "../build"));
-fs.emptyDirSync(path.resolve(__dirname, "../build-reports"));
+fs.emptyDirSync(path.resolve(__dirname, '../build'));
+fs.emptyDirSync(path.resolve(__dirname, '../build-reports'));
 
-webpackConfigClient.name = "Client";
+webpackConfigClient.name = 'Client';
 webpackConfigClient.entry.push(
   'webpack-hot-middleware/client',
   './entrypoint/client/dev.ssr.js',
@@ -75,18 +76,18 @@ webpackConfigClient.module.rules = [
       },
     ],
   },
-],
+];
 webpackConfigClient.plugins = [
   new webpack.HotModuleReplacementPlugin(),
 ];
 // webpackConfigClient.entry.push("./entrypoint/client/prod.ssr.js");
 
-webpackConfigServer.name = "Server";
+webpackConfigServer.name = 'Server';
 webpackConfigServer.mode = 'development';
-webpackConfigServer.target = "node";
-webpackConfigServer.entry = { app: ["./src/App"] };
-webpackConfigServer.output.filename = "[name].js";
-webpackConfigServer.output.libraryTarget = "commonjs2";
+webpackConfigServer.target = 'node';
+webpackConfigServer.entry = { app: ['./src/App'] };
+webpackConfigServer.output.filename = '[name].js';
+webpackConfigServer.output.libraryTarget = 'commonjs2';
 webpackConfigServer.externals = /^[a-z\-0-9]+$/;
 webpackConfigServer.module = {
   rules: [
@@ -96,11 +97,11 @@ webpackConfigServer.module = {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-            }
-          }
+            },
+          },
         },
         {
           test: /\.css$/,
@@ -140,9 +141,9 @@ webpackConfigServer.module = {
             name: 'media/[name].[hash:8].[ext]',
           },
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 webpackConfigServer.plugins = [];
 

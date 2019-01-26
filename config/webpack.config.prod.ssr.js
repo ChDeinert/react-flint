@@ -1,26 +1,27 @@
-const path = require("path");
-const fs = require("fs-extra");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const ManifestPlugin = require("webpack-manifest-plugin");
+const path = require('path');
+const fs = require('fs-extra');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const cloneDeep = require('lodash/cloneDeep');
 
-const webpackConfigBase = require("./webpack.config.base");
+const webpackConfigBase = require('./webpack.config.base');
+
 const webpackConfigClient = cloneDeep(webpackConfigBase);
 const webpackConfigServer = cloneDeep(webpackConfigBase);
 
-fs.emptyDirSync(path.resolve(__dirname, "../build"));
-fs.emptyDirSync(path.resolve(__dirname, "../build-reports"));
+fs.emptyDirSync(path.resolve(__dirname, '../build'));
+fs.emptyDirSync(path.resolve(__dirname, '../build-reports'));
 
-webpackConfigClient.name = "Client";
-webpackConfigClient.entry.push("./entrypoint/client/prod.ssr.js");
+webpackConfigClient.name = 'Client';
+webpackConfigClient.entry.push('./entrypoint/client/prod.ssr.js');
 
-webpackConfigServer.name = "Server";
-webpackConfigServer.target = "node";
-webpackConfigServer.entry = { app: ["./src/App"] };
-webpackConfigServer.output.filename = "[name].js";
-webpackConfigServer.output.libraryTarget = "commonjs2";
+webpackConfigServer.name = 'Server';
+webpackConfigServer.target = 'node';
+webpackConfigServer.entry = { app: ['./src/App'] };
+webpackConfigServer.output.filename = '[name].js';
+webpackConfigServer.output.libraryTarget = 'commonjs2';
 webpackConfigServer.externals = /^[a-z\-0-9]+$/;
 webpackConfigServer.module = {
   rules: [
@@ -30,11 +31,11 @@ webpackConfigServer.module = {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              cacheDirectory: true
-            }
-          }
+              cacheDirectory: true,
+            },
+          },
         },
         {
           test: /\.css$/,
@@ -73,29 +74,29 @@ webpackConfigServer.module = {
           options: {
             name: 'static/media/[name].[hash:8].[ext]',
           },
-        }
-      ]
-    }
-  ]
+        },
+      ],
+    },
+  ],
 };
 webpackConfigServer.plugins = [
   new UglifyJsPlugin({
     uglifyOptions: {
       compress: {
         warnings: false,
-        comparisons: false
+        comparisons: false,
       },
       output: {
         comments: false,
-        ascii_only: true
+        ascii_only: true,
       },
-      safari10: true
+      safari10: true,
     },
-    sourceMap: true
+    sourceMap: true,
   }),
   new ManifestPlugin({
-    fileName: "asset-manifest.ssr.json"
-  })
+    fileName: 'asset-manifest.ssr.json',
+  }),
 ];
 
 module.exports = [webpackConfigClient, webpackConfigServer];
