@@ -82,8 +82,8 @@ webpackConfigServer.module = {
 webpackConfigServer.plugins = [
   new UglifyJsPlugin({
     uglifyOptions: {
+      warnings: false,
       compress: {
-        warnings: false,
         comparisons: false,
       },
       output: {

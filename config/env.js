@@ -1,5 +1,5 @@
 const dotEnvPath = process.env.DOT_ENV_PATH || '.env';
-require('dotenv').load({ path: dotEnvPath, silent: true });
+require('dotenv').config({ path: dotEnvPath, silent: true });
 
 module.exports = {
   htmlTitle: 'react-flint',
