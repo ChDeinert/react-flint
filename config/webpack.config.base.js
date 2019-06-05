@@ -6,7 +6,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const cssImport = require('postcss-import');
-const cssnext = require('postcss-cssnext');
+const postcssPresetEnv = require('postcss-preset-env');
 
 const env = require('./env');
 
@@ -57,14 +57,7 @@ module.exports = {
                   ident: 'postcss',
                   plugins: () => [
                     cssImport(),
-                    cssnext({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                    }),
+                    postcssPresetEnv(),
                   ],
                 },
               },

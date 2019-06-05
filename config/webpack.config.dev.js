@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const cssImport = require('postcss-import');
-const cssnext = require('postcss-cssnext');
+const postcssPresetEnv = require('postcss-preset-env');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const webpackConfig = require('./webpack.config.base');
@@ -46,14 +46,7 @@ webpackConfig.module.rules = [
               ident: 'postcss',
               plugins: () => [
                 cssImport(),
-                cssnext({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9',
-                  ],
-                }),
+                postcssPresetEnv(),
               ],
             },
           },
