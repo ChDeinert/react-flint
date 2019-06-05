@@ -84,8 +84,8 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin({
       uglifyOptions: {
+        warnings: false,
         compress: {
-          warnings: false,
           comparisons: false,
         },
         output: {
