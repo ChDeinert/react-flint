@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const cssImport = require('postcss-import');
-const cssnext = require('postcss-cssnext');
+const postcssPresetEnv = require('postcss-preset-env');
 const cloneDeep = require('lodash/cloneDeep');
 
 const webpackConfigBase = require('./webpack.config.base');
@@ -55,14 +55,7 @@ webpackConfigServer.module = {
                 ident: 'postcss',
                 plugins: () => [
                   cssImport(),
-                  cssnext({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ],
-                  }),
+                  postcssPresetEnv(),
                 ],
               },
             },
