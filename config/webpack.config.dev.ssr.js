@@ -44,8 +44,9 @@ webpackConfigClient.module.rules = [
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]',
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
             },
           },
           {
@@ -101,10 +102,11 @@ webpackConfigServer.module = {
             {
               loader: require.resolve('css-loader'),
               options: {
-                exportOnlyLocals: true,
-                modules: true,
+                onlyLocals: true,
+                modules: {
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                },
                 importLoaders: 1,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },
             {
