@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders the Header component 1`] = `
+<DocumentFragment>
+  <header>
+    <img
+      alt="logo"
+      src="logo.svg"
+    />
+    <span>
+      react-flint
+    </span>
+  </header>
+  <div>
+    <h1>
+      Welcome!
+    </h1>
+    <p>
+      You are all set. And can start working on your Application now.
+    </p>
+  </div>
+</DocumentFragment>
+`;

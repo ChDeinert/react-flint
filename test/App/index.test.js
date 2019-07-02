@@ -1,16 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
-
+import {
+  render,
+} from '@testing-library/react';
 import App from 'AppSource';
 
 describe('<App />', () => {
-  let wrapper;
-
-  beforeAll(() => {
-    wrapper = mount(<App />);
-  });
-
   it('renders the Header component', () => {
-    expect(wrapper.find('Header')).toHaveLength(1);
+    const { asFragment } = render(<App />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });
