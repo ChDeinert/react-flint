@@ -49,9 +49,8 @@ To build bundles & serve them with and express server with Serverside Rendering:
 - [webpack](https://webpack.js.org/)
 - [babel](https://babeljs.io/)
 - [PostCSS](http://postcss.org/)
-- [cssnext](http://cssnext.io/)
 - [Jest](https://facebook.github.io/jest/)
-- [enzyme](http://airbnb.io/enzyme/)
+- [testing-library](https://testing-library.com/docs/react-testing-library/intro)
 
 ## Contribution
 

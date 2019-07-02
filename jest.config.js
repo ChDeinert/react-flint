@@ -4,7 +4,9 @@ module.exports = {
   testMatch: ['<rootDir>/test/**/?(*.)(spec|test).{js,jsx}'],
   setupFiles: [
     '<rootDir>/config/polyfills.js',
-    '<rootDir>/config/jest/enzyme.js',
+  ],
+  setupFilesAfterEnv: [
+    '@testing-library/react/cleanup-after-each',
   ],
   transform: {
     '^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
