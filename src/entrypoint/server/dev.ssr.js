@@ -22,7 +22,7 @@ const getTemplate = () => {
     .readFileSync(templatePath, 'utf8')
     .replace(
       /(<\/body\s*>)/i,
-      match => `<script type="text/javascript" src="${
+      (match) => `<script type="text/javascript" src="${
           env.publicPath
         }js/main.js"></script>${match}`,
     );

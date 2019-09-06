@@ -1,3 +1,3 @@
 const fs = require('fs');
 
-module.exports = templatePath => () => fs.readFileSync(templatePath, 'utf8');
+module.exports = (templatePath) => () => fs.readFileSync(templatePath, 'utf8');
